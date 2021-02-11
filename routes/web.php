@@ -22,5 +22,17 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/about','AboutController')->middleware('test');
 Route::resource('/contact','ContactController');
-
 Route::get('/alert', 'alert@index')->name('alert');
+
+Route::resource('post', 'PostController');
+
+
+
+
+
+
+
+
+
+
+

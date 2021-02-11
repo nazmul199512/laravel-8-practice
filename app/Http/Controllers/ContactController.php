@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use App\contact;
 use Illuminate\Http\Request;
 
+/**
+ * Class ContactController
+ * @package App\Http\Controllers
+ * @author MD. Nazmul Alam <nazmul199512@gmail.com>
+ */
 class ContactController extends Controller
 {
     /**
@@ -78,9 +83,14 @@ class ContactController extends Controller
      * @param  \App\contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, contact $contact)
+    public function update(Request $request, $id)
     {
-        //
+        $contact = contact::find($id);
+        if(!$contact){
+            return back()->with('error','Contact not found');
+        }
+        $contact->update($request->all());
+        return back()->with('success', 'Contact Updated successfully');
     }
 
     /**
@@ -89,8 +99,13 @@ class ContactController extends Controller
      * @param  \App\contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function destroy(contact $contact)
+    public function destroy($id)
     {
-        //
+        $contact = contact::find($id);
+        if(!$contact){
+            return back()->with('error','contact not found');
+        }
+        $contact->delete();
+        return back()->with('success','contact deleted');
     }
 }

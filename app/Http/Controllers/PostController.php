@@ -3,30 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\About;
+use App\Post;
 use Illuminate\Http\Request;
 
 /**
- * Class AboutController
+ * Class PostController
  * @package App\Http\Controllers
  * @author MD. Nazmul Alam <nazmul199512@gmail.com>
  */
-class AboutController extends Controller
+class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $about = About::all();
-        $ip = $request->ip();
-        $url = url()->full();
-        return view('about.index',[
-            'ip'=>$ip,
-            'url'=>$url,
-            'about'=>$about,
-            ]);
+        $post = Post::all();
+        return view('post.index',['posts'=>$post]);
     }
 
     /**
@@ -53,10 +48,10 @@ class AboutController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\About  $about
+     * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(About $about)
+    public function show(Post $post)
     {
         //
     }
@@ -64,10 +59,10 @@ class AboutController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\About  $about
+     * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(About $about)
+    public function edit(Post $post)
     {
         //
     }
@@ -76,10 +71,10 @@ class AboutController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\About  $about
+     * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, About $about)
+    public function update(Request $request, Post $post)
     {
         //
     }
@@ -87,10 +82,10 @@ class AboutController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\About  $about
+     * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(About $about)
+    public function destroy(Post $post)
     {
         //
     }
